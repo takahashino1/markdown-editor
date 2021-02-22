@@ -58,7 +58,34 @@ e.exports=function(e){return null!=e&&null!=e.constructor&&"function"==typeof e.
   height: 2rem;
   min-width: 5rem;
   padding: 0 1rem;
-`,Un=e=>r.createElement(Bn,{onClick:e.onClick},e.children),Hn=o.b.header`
+
+  &.cancel {
+      background: white;
+      border: 1px solid gray;
+      color: gray;
+    }
+`,Un=e=>r.createElement(Bn,{onClick:e.onClick,className:e.cancel?"cancel":""},e.children),{useState:Hn}=r,Kn=o.b.div`
+  align-items: center;
+  background-color: #0002;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+`,qn=o.b.div`
+  background: #fff;
+  padding: 1rem;
+  width: 32rem;
+`,Vn=o.b.input`
+  width: 29rem;
+  padding: 0.5rem;
+`,$n=o.b.div`
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+`,Wn=e=>{const{onCancel:t,onSave:n}=e,[i,o]=Hn((new Date).toISOString());return r.createElement(Kn,null,r.createElement(qn,null,r.createElement("p",null,"テキストの内容を保存します。"),r.createElement("p",null,"保存内容のタイトルを入力して「保存」ボタンを押してください。"),r.createElement("p",null,r.createElement(Vn,{type:"text",value:i,onChange:e=>o(e.target.value)})),r.createElement($n,null,r.createElement(Un,{onClick:t,cancel:!0},"キャンセル"),r.createElement(Un,{onClick:()=>n(i)},"保存"))))},{useState:Qn}=r,Yn=o.b.header`
   align-content: center;
   display: flex;
   font-size: 1.5rem;
@@ -70,17 +97,17 @@ e.exports=function(e){return null!=e&&null!=e.constructor&&"function"==typeof e.
   position: fixed;
   right: 0;
   top: 0;
-`,Kn=o.b.div`
+`,Gn=o.b.div`
     height: 2rem;
     display: flex;
     align-content: center;
-`,qn=o.b.div`
+`,Xn=o.b.div`
   bottom: 0;
   left: 0;
   position: fixed;
   right: 0;
   top: 3rem;
-`,Vn=o.b.textarea`
+`,Zn=o.b.textarea`
   border-right: 1px solid silver;
   border-top: 1px solid silver;
   bottom: 0;
@@ -90,7 +117,7 @@ e.exports=function(e){return null!=e&&null!=e.constructor&&"function"==typeof e.
   position: absolute;
   top: 0;
   width: 50vw;
-`,$n=o.b.div`
+`,Jn=o.b.div`
   border-top: 1px solid silver;
   bottom: 0;
   overflow-y: scroll;
@@ -99,8 +126,8 @@ e.exports=function(e){return null!=e&&null!=e.constructor&&"function"==typeof e.
   right: 0;
   top: 0;
   width: 50vw;
-`,Wn=o.a`
+`,er=o.a`
     body * {
       box-sizing: border-box;
     }
-  `,Qn=r.createElement(r.Fragment,null,r.createElement(Wn,null),r.createElement(()=>{const[e,t]=((e,t)=>{const[n,i]=Object(r.useState)(localStorage.getItem(t)||e);return[n,e=>{i(e),localStorage.setItem(t,e)}]})("","pages/editor:text");return r.createElement(r.Fragment,null,r.createElement(Hn,null,"Markdown Editor",r.createElement(Kn,null,r.createElement(Un,{onClick:()=>{((e,t)=>{jn(void 0,void 0,void 0,(function*(){const n=(new Date).toISOString();yield Ln.put({datetime:n,title:e,text:t})}))})("TITLE",e)}},"保存する"))),r.createElement(qn,null,r.createElement(Vn,{onChange:e=>t(e.target.value),value:e}),r.createElement($n,null,r.createElement(a,{source:e}))))},null));Object(i.render)(Qn,document.getElementById("app"))}]);
+  `,tr=r.createElement(r.Fragment,null,r.createElement(er,null),r.createElement(()=>{const[e,t]=((e,t)=>{const[n,i]=Object(r.useState)(localStorage.getItem(t)||e);return[n,e=>{i(e),localStorage.setItem(t,e)}]})("","pages/editor:text"),[n,i]=Qn(!1);return r.createElement(r.Fragment,null,r.createElement(Yn,null,"Markdown Editor",r.createElement(Gn,null,r.createElement(Un,{onClick:()=>i(!0)},"保存する"))),r.createElement(Xn,null,r.createElement(Zn,{onChange:e=>t(e.target.value),value:e}),r.createElement(Jn,null,r.createElement(a,{source:e}))),n&&r.createElement(Wn,{onSave:t=>{((e,t)=>{jn(void 0,void 0,void 0,(function*(){const n=(new Date).toISOString();yield Ln.put({datetime:n,title:e,text:t})}))})(t,e),i(!1)},onCancel:()=>i(!1)}))},null));Object(i.render)(tr,document.getElementById("app"))}]);
